@@ -38,7 +38,7 @@ size = Vector2(64, 128)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hnrr6"]
 
-[node name="Altair" type="CharacterBody2D"]
+[node name="Altair" type="CharacterBody2D" groups=["player"]]
 script = SubResource("GDScript_alnjj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

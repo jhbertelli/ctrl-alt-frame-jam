@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyyslof76unot"]
+
+[ext_resource type="Script" path="res://scripts/diary_page.gd" id="1_8uohc"]
+[ext_resource type="Texture2D" uid="uid://8w0di6jwteuo" path="res://sprites/temp_diarypage.png" id="2_4bf64"]
+[ext_resource type="PackedScene" uid="uid://bpyrxnciyfvoc" path="res://interaction/area/interaction_area.tscn" id="3_lkwn6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0chim"]
+size = Vector2(100, 100)
+
+[node name="DiaryPage" type="Node2D"]
+script = ExtResource("1_8uohc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4bf64")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_lkwn6")]
+action_name = "interagir"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_0chim")
