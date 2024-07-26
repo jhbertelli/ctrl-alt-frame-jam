@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://0168lo0xqg60"]
+[gd_scene load_steps=6 format=3 uid="uid://0168lo0xqg60"]
 
 [ext_resource type="PackedScene" uid="uid://cs5doddy0yei3" path="res://characters/altair.tscn" id="1_7udre"]
 [ext_resource type="PackedScene" uid="uid://civnfwkqy5dyx" path="res://wall.tscn" id="2_tgp80"]
 [ext_resource type="PackedScene" uid="uid://dyyslof76unot" path="res://objects/diary_page.tscn" id="3_5wlan"]
+[ext_resource type="PackedScene" uid="uid://qttflf71k13x" path="res://characters/enemy_1.tscn" id="4_baxqr"]
+[ext_resource type="PackedScene" uid="uid://c3ylki0l14qis" path="res://characters/bat.tscn" id="5_uddku"]
 
 [node name="Level1" type="Node2D"]
 
 [node name="Altair" parent="." instance=ExtResource("1_7udre")]
-position = Vector2(-347, 64)
+position = Vector2(-439, 213)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-417, 203)
+zoom = Vector2(4, 4)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_tgp80")]
-position = Vector2(0, 317)
-scale = Vector2(58, 4)
+position = Vector2(-405, 297)
+scale = Vector2(18, 2)
 
 [node name="DiaryPage" parent="." instance=ExtResource("3_5wlan")]
-position = Vector2(192, 252)
+position = Vector2(-517, 269)
+scale = Vector2(1, 1.00729)
+
+[node name="Enemy1" parent="." instance=ExtResource("4_baxqr")]
+position = Vector2(-291, 261)
+
+[node name="Bat" parent="." instance=ExtResource("5_uddku")]
+position = Vector2(-542, 197)

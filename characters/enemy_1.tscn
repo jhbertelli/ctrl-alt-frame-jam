@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://qttflf71k13x"]
+
+[ext_resource type="Script" path="res://characters/enemy_1.gd" id="1_2mpd0"]
+[ext_resource type="Texture2D" uid="uid://btmwym5xule8s" path="res://icon.svg" id="1_sp1qt"]
+[ext_resource type="Script" path="res://scripts/enemy_fov.gd" id="3_i6t4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxu1r"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xx8s"]
+radius = 80.3057
+
+[node name="Enemy1" type="CharacterBody2D"]
+script = ExtResource("1_2mpd0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kxu1r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_sp1qt")
+
+[node name="EnemyFOV" type="Area2D" parent="."]
+script = ExtResource("3_i6t4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFOV"]
+shape = SubResource("CircleShape2D_5xx8s")
+
+[connection signal="body_entered" from="EnemyFOV" to="EnemyFOV" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyFOV" to="EnemyFOV" method="_on_body_exited"]
