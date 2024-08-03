@@ -1,30 +1,109 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3ylki0l14qis"]
+[gd_scene load_steps=15 format=3 uid="uid://c3ylki0l14qis"]
 
 [ext_resource type="Script" path="res://scripts/bat.gd" id="1_kvpu7"]
 [ext_resource type="Texture2D" uid="uid://btmwym5xule8s" path="res://icon.svg" id="2_poq3u"]
 [ext_resource type="Script" path="res://scripts/enemy_fov.gd" id="3_vmd32"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_th8jk"]
-radius = 16.0312
+[ext_resource type="Texture2D" uid="uid://bxbeqk7m21y8m" path="res://sprites/bat_sheet.png" id="4_v4y85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xx8s"]
 radius = 80.3057
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmn3y"]
+atlas = ExtResource("4_v4y85")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ma1p"]
+atlas = ExtResource("4_v4y85")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ubjb"]
+atlas = ExtResource("4_v4y85")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fugp"]
+atlas = ExtResource("4_v4y85")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbpwe"]
+atlas = ExtResource("4_v4y85")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x805"]
+atlas = ExtResource("4_v4y85")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mskw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmn3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ma1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ubjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbpwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x805")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_psr0r"]
+radius = 13.0384
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4q0l"]
+size = Vector2(21.9043, 8.7462)
+
 [node name="Bat" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_kvpu7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_th8jk")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_poq3u")
 
 [node name="EnemyFOV" type="Area2D" parent="."]
 script = ExtResource("3_vmd32")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyFOV"]
 shape = SubResource("CircleShape2D_5xx8s")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8mskw")
+autoplay = "default"
+frame_progress = 0.688647
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_psr0r")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(16, -11)
+rotation = -0.506145
+shape = SubResource("RectangleShape2D_n4q0l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-15, -11)
+rotation = 0.541052
+shape = SubResource("RectangleShape2D_n4q0l")
+metadata/_edit_group_ = true
 
 [connection signal="body_entered" from="EnemyFOV" to="EnemyFOV" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyFOV" to="EnemyFOV" method="_on_body_exited"]
