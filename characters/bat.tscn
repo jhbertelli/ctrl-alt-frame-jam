@@ -65,6 +65,7 @@ radius = 13.0384
 size = Vector2(21.9043, 8.7462)
 
 [node name="Bat" type="CharacterBody2D"]
+z_index = 2
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_kvpu7")

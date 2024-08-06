@@ -12,8 +12,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func enemy():
 	pass
 
-func take_damage():
-	hp -= player.atk
+func take_damage(damage: int):
+	hp -= damage
 	
 	if hp <= 0:
 		queue_free()

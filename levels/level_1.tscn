@@ -1,13 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://0168lo0xqg60"]
+[gd_scene load_steps=8 format=3 uid="uid://0168lo0xqg60"]
 
 [ext_resource type="PackedScene" uid="uid://cs5doddy0yei3" path="res://characters/altair.tscn" id="1_7udre"]
-[ext_resource type="PackedScene" uid="uid://civnfwkqy5dyx" path="res://wall.tscn" id="2_tgp80"]
+[ext_resource type="PackedScene" uid="uid://cr2if24phwxhg" path="res://ui/ui.tscn" id="2_8pt53"]
 [ext_resource type="PackedScene" uid="uid://dyyslof76unot" path="res://objects/diary_page.tscn" id="3_5wlan"]
+[ext_resource type="Texture2D" uid="uid://sdjjxw7ucnoe" path="res://sprites/tempfloor.png" id="5_85ra5"]
 [ext_resource type="PackedScene" uid="uid://c3ylki0l14qis" path="res://characters/bat.tscn" id="5_uddku"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qthrd"]
+texture = ExtResource("5_85ra5")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_tyw4y"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qthrd")
 
 [node name="Level1" type="Node2D"]
 
 [node name="Altair" parent="." instance=ExtResource("1_7udre")]
+z_index = 1
 position = Vector2(-439, 213)
 
 [node name="Camera2D" type="Camera2D" parent="Altair"]
@@ -16,25 +31,16 @@ zoom = Vector2(3.5, 3.5)
 limit_left = -600
 position_smoothing_speed = 20.0
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_tgp80")]
-position = Vector2(-405, 297)
-scale = Vector2(18, 2)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_tgp80")]
-position = Vector2(-47, 297)
-scale = Vector2(18, 2)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_tgp80")]
-position = Vector2(-333, 257)
-scale = Vector2(3, 2)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_tgp80")]
-position = Vector2(-241, 232)
-scale = Vector2(3, 2)
-
 [node name="DiaryPage" parent="." instance=ExtResource("3_5wlan")]
-position = Vector2(-517, 269)
+position = Vector2(-489, 248)
 scale = Vector2(1, 1.00729)
 
 [node name="Bat" parent="." instance=ExtResource("5_uddku")]
 position = Vector2(-38, 229)
+
+[node name="Health" parent="." instance=ExtResource("2_8pt53")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_tyw4y")
+format = 2
+layer_0/tile_data = PackedInt32Array(327673, 0, 0, 327671, 0, 0, 327672, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327670, 0, 0, 262134, 0, 0, 196598, 0, 0, 131062, 0, 0)
